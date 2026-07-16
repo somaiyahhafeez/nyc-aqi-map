@@ -4,54 +4,28 @@ import os
 from datetime import datetime
 
 
-API_KEY = os.environ["AIR_NOW_API_KEY"]
+API_KEY = os.environ["AIRNOW_API_KEY"]
 
 
-locations = [
-    {
-        "name": "Manhattan",
-        "zip": "10001",
-        "type": "borough"
-    },
-    {
-        "name": "Brooklyn",
-        "zip": "11201",
-        "type": "borough"
-    },
-    {
-        "name": "Queens",
-        "zip": "11354",
-        "type": "borough"
-    },
-    {
-        "name": "Bronx",
-        "zip": "10451",
-        "type": "borough"
-    },
-    {
-        "name": "Staten Island",
-        "zip": "10301",
-        "type": "borough"
-    },
-    {
-        "name": "New York State",
-        "zip": "12207",
-        "type": "state"
-    }
-]
+# Read county list
+counties = pd.read_csv("ny_counties.csv")
 
 
 rows = []
 
 
-for loc in locations:
+for _, county in counties.iterrows():
+
+    county_name = county["county"]
+    zipcode = str(county["zip"])
+
 
     url = "https://www.airnowapi.org/aq/observation/zipCode/current/"
 
 
     params = {
         "format": "application/json",
-        "zipCode": loc["zip"],
+        "zipCode": zipcode,
         "distance": "25",
         "API_KEY": API_KEY
     }
@@ -64,7 +38,7 @@ for loc in locations:
 
 
     print(
-        loc["name"],
+        county_name,
         response.status_code
     )
 
@@ -80,7 +54,7 @@ for loc in locations:
         continue
 
 
-    # Keep highest AQI pollutant
+    # choose highest AQI pollutant
     worst = max(
         data,
         key=lambda x: x["AQI"]
@@ -89,9 +63,7 @@ for loc in locations:
 
     rows.append({
 
-        "area": loc["name"],
-
-        "type": loc["type"],
+        "county": county_name,
 
         "latitude": worst["Latitude"],
 
@@ -126,5 +98,5 @@ df.to_csv(
 
 
 print(
-    f"Created data.csv with {len(df)} rows"
+    f"Created data.csv with {len(df)} counties"
 )
