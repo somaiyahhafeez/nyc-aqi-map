@@ -8,14 +8,14 @@ API_KEY = os.environ["AIRNOW_API_KEY"]
 
 
 # NYC bounding box
-BBOX = "-74.0,40.5,-73.9,40.6"
+BBOX = "-74.3,40.4,-73.6,41.0"
 
 
-# Get previous completed hour
-time = datetime.utcnow() - timedelta(hours=2)
+# Previous completed hour
+now = datetime.utcnow() - timedelta(hours=1)
 
-start = time.strftime("%Y-%m-%dT%H-0000")
-end = (time + timedelta(hours=1)).strftime("%Y-%m-%dT%H-0000")
+start = now.strftime("%Y-%m-%dT%H-0000")
+end = (now + timedelta(hours=1)).strftime("%Y-%m-%dT%H-0000")
 
 
 url = "https://www.airnowapi.org/aq/data/"
@@ -24,7 +24,7 @@ url = "https://www.airnowapi.org/aq/data/"
 params = {
     "startDate": start,
     "endDate": end,
-    "parameters": "PM2.5",
+    "parameters": "PM25",
     "BBOX": BBOX,
     "dataType": "A",
     "format": "application/json",
@@ -41,8 +41,8 @@ print(params)
 response = requests.get(url, params=params)
 
 
-print("Response:")
-print(response.text[:1000])
+print("AirNow response:")
+print(response.text[:500])
 
 
 response.raise_for_status()
@@ -72,16 +72,15 @@ for item in data:
     })
 
 
-if not rows:
-    print("No data returned")
-    exit()
-
-
 df = pd.DataFrame(rows)
 
 
 df.drop_duplicates(
-    subset=["latitude","longitude","pollutant"],
+    subset=[
+        "latitude",
+        "longitude",
+        "pollutant"
+    ],
     inplace=True
 )
 
@@ -92,6 +91,4 @@ df.to_csv(
 )
 
 
-print(
-    f"Created data.csv with {len(df)} rows"
-)
+print(f"Saved {len(df)} AQI points")
