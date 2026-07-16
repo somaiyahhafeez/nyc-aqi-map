@@ -4,30 +4,56 @@ import os
 from datetime import datetime
 
 
-API_KEY = os.environ["IQAIR_API_KEY"]
+API_KEY = os.environ["AIR_NOW_API_KEY"]
 
 
-cities = pd.read_csv("ny_cities.csv")
+locations = [
+    {
+        "name": "Manhattan",
+        "zip": "10001",
+        "type": "borough"
+    },
+    {
+        "name": "Brooklyn",
+        "zip": "11201",
+        "type": "borough"
+    },
+    {
+        "name": "Queens",
+        "zip": "11354",
+        "type": "borough"
+    },
+    {
+        "name": "Bronx",
+        "zip": "10451",
+        "type": "borough"
+    },
+    {
+        "name": "Staten Island",
+        "zip": "10301",
+        "type": "borough"
+    },
+    {
+        "name": "New York State",
+        "zip": "12207",
+        "type": "state"
+    }
+]
 
 
 rows = []
 
 
-for _, row in cities.iterrows():
+for loc in locations:
 
-    city = row["city"]
-    state = "New York"
-    country = "USA"
-
-
-    url = "http://api.airvisual.com/v2/city"
+    url = "https://www.airnowapi.org/aq/observation/zipCode/current/"
 
 
     params = {
-        "city": city,
-        "state": state,
-        "country": country,
-        "key": API_KEY
+        "format": "application/json",
+        "zipCode": loc["zip"],
+        "distance": "25",
+        "API_KEY": API_KEY
     }
 
 
@@ -37,7 +63,10 @@ for _, row in cities.iterrows():
     )
 
 
-    print(city, response.status_code)
+    print(
+        loc["name"],
+        response.status_code
+    )
 
 
     if response.status_code != 200:
@@ -47,28 +76,44 @@ for _, row in cities.iterrows():
     data = response.json()
 
 
-    pollution = data["data"]["current"]["pollution"]
+    if len(data) == 0:
+        continue
+
+
+    # Keep highest AQI pollutant
+    worst = max(
+        data,
+        key=lambda x: x["AQI"]
+    )
 
 
     rows.append({
 
-        "county": row["county"],
+        "area": loc["name"],
 
-        "city": city,
+        "type": loc["type"],
 
-        "latitude": data["data"]["location"]["coordinates"][1],
+        "latitude": worst["Latitude"],
 
-        "longitude": data["data"]["location"]["coordinates"][0],
+        "longitude": worst["Longitude"],
 
-        "AQI_US": pollution["aqius"],
+        "AQI": worst["AQI"],
 
-        "main_pollutant": pollution["mainus"],
+        "pollutant": worst["ParameterName"],
+
+        "category": worst["Category"]["Name"],
+
+        "source": "AirNow",
 
         "updated": datetime.now().strftime(
             "%Y-%m-%d %H:%M"
         )
 
     })
+
+
+if not rows:
+    raise Exception("No AQI data returned")
 
 
 df = pd.DataFrame(rows)
@@ -81,5 +126,5 @@ df.to_csv(
 
 
 print(
-    f"Created {len(df)} AQI locations"
+    f"Created data.csv with {len(df)} rows"
 )
