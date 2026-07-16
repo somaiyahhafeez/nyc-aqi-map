@@ -39,6 +39,7 @@ jobs:
           AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
         run: |
           python update.py
+          python create_nyc.py
 
 
       - name: Save new CSV
@@ -46,11 +47,11 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-          if [ -f data.csv ]; then
-            git add data.csv
+          if [ -f data.csv ] && [ -f nyc_data.csv ]; then
+            git add data.csv nyc_data.csv
             git commit -m "Update AQI data" || exit 0
             git push
           else
-            echo "No data.csv created"
+            echo "Missing CSV file"
             exit 1
           fi
