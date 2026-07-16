@@ -4,30 +4,30 @@ import os
 from datetime import datetime
 
 
-API_KEY = os.environ["AIRNOW_API_KEY"]
+API_KEY = os.environ["IQAIR_API_KEY"]
 
 
-# Read NY county list
-counties = pd.read_csv("ny_counties.csv")
+cities = pd.read_csv("ny_counties.csv")
 
 
 rows = []
 
 
-for _, county in counties.iterrows():
+for _, row in cities.iterrows():
 
-    name = county["county"]
-    zipcode = str(county["zip"])
+    city = row["city"]
+    state = "New York"
+    country = "USA"
 
 
-    url = "https://www.airnowapi.org/aq/observation/zipCode/current/"
+    url = "http://api.airvisual.com/v2/city"
 
 
     params = {
-        "format": "application/json",
-        "zipCode": zipcode,
-        "distance": "25",
-        "API_KEY": API_KEY
+        "city": city,
+        "state": state,
+        "country": country,
+        "key": API_KEY
     }
 
 
@@ -37,7 +37,7 @@ for _, county in counties.iterrows():
     )
 
 
-    print(name, response.status_code)
+    print(city, response.status_code)
 
 
     if response.status_code != 200:
@@ -47,40 +47,28 @@ for _, county in counties.iterrows():
     data = response.json()
 
 
-    if len(data) == 0:
-        continue
-
-
-    # choose pollutant with highest AQI
-    worst = max(
-        data,
-        key=lambda x: x["AQI"]
-    )
+    pollution = data["data"]["current"]["pollution"]
 
 
     rows.append({
 
-        "county": name,
+        "county": row["county"],
 
-        "latitude": worst["Latitude"],
+        "city": city,
 
-        "longitude": worst["Longitude"],
+        "latitude": data["data"]["location"]["coordinates"][1],
 
-        "AQI": worst["AQI"],
+        "longitude": data["data"]["location"]["coordinates"][0],
 
-        "pollutant": worst["ParameterName"],
+        "AQI_US": pollution["aqius"],
 
-        "category": worst["Category"]["Name"],
+        "main_pollutant": pollution["mainus"],
 
         "updated": datetime.now().strftime(
             "%Y-%m-%d %H:%M"
         )
 
     })
-
-
-if not rows:
-    raise Exception("No AQI data returned")
 
 
 df = pd.DataFrame(rows)
@@ -93,5 +81,5 @@ df.to_csv(
 
 
 print(
-    f"Created data.csv with {len(df)} counties"
+    f"Created {len(df)} AQI locations"
 )
