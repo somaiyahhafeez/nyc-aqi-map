@@ -59,10 +59,55 @@ def haversine_miles(lat1, lon1, lat2, lon2):
 
 
 def fetch_zip_centroids() -> pd.DataFrame:
-    """AirNow's own zip -> lat/long lookup file, updated daily."""
+    """
+    AirNow's own zip -> lat/long lookup file, updated daily.
+
+    This file isn't always cleanly comma-delimited -- some rows contain a
+    literal comma inside a text field, which breaks pandas' default parser
+    (it infers the delimiter from the bulk of the file, then chokes on the
+    rare row that has an extra comma). We detect the real delimiter and
+    silently skip any row that doesn't match the header's column count
+    rather than crashing the whole job over a handful of bad rows.
+    """
+    import csv
+    from io import StringIO
+
     url = "https://files.airnowtech.org/airnow/today/cityzipcodes.csv"
-    df = pd.read_csv(url, dtype={"zipcode": str})
-    df = df.rename(columns={"zipcode": "zip", "latitude": "zip_lat", "longitude": "zip_lon"})
+    resp = requests.get(url, timeout=30)
+    resp.raise_for_status()
+    text = resp.text
+
+    first_line = next(line for line in text.splitlines() if line.strip())
+    try:
+        delimiter = csv.Sniffer().sniff(first_line, delimiters=",|;\t").delimiter
+    except csv.Error:
+        # Fall back to whichever candidate delimiter appears most often
+        delimiter = max(",|;\t", key=first_line.count)
+
+    reader = csv.reader(StringIO(text), delimiter=delimiter)
+    rows = list(reader)
+    header = [h.strip().lower() for h in rows[0]]
+    expected_cols = len(header)
+
+    good_rows = [r for r in rows[1:] if len(r) == expected_cols]
+    skipped = len(rows) - 1 - len(good_rows)
+    if skipped:
+        print(f"Skipped {skipped} malformed row(s) in cityzipcodes.csv")
+
+    df = pd.DataFrame(good_rows, columns=header)
+
+    # Column names in this file can vary slightly; match by substring
+    # instead of an exact hardcoded name.
+    zip_col = next(c for c in df.columns if "zip" in c)
+    lat_col = next(c for c in df.columns if "lat" in c)
+    lon_col = next(c for c in df.columns if "lon" in c)
+
+    df = df.rename(columns={zip_col: "zip", lat_col: "zip_lat", lon_col: "zip_lon"})
+    df["zip"] = df["zip"].astype(str).str.strip()
+    df["zip_lat"] = pd.to_numeric(df["zip_lat"], errors="coerce")
+    df["zip_lon"] = pd.to_numeric(df["zip_lon"], errors="coerce")
+    df = df.dropna(subset=["zip_lat", "zip_lon"])
+
     return df[["zip", "zip_lat", "zip_lon"]]
 
 
