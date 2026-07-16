@@ -8,15 +8,14 @@ API_KEY = os.environ["AIRNOW_API_KEY"]
 
 
 # NYC bounding box
-# west,south,east,north
 BBOX = "-74.3,40.4,-73.6,41.0"
 
 
-# AirNow works best with recent completed hours
-now = datetime.utcnow() - timedelta(hours=1)
+# Get previous completed hour
+time = datetime.utcnow() - timedelta(hours=2)
 
-start = now.strftime("%Y-%m-%dT%H-0000")
-end = (now + timedelta(hours=1)).strftime("%Y-%m-%dT%H-0000")
+start = time.strftime("%Y-%m-%dT%H-0000")
+end = (time + timedelta(hours=1)).strftime("%Y-%m-%dT%H-0000")
 
 
 url = "https://www.airnowapi.org/aq/data/"
@@ -25,7 +24,7 @@ url = "https://www.airnowapi.org/aq/data/"
 params = {
     "startDate": start,
     "endDate": end,
-    "parameters": "PM25",
+    "parameters": "PM2.5",
     "BBOX": BBOX,
     "dataType": "A",
     "format": "application/json",
@@ -35,19 +34,15 @@ params = {
 }
 
 
-print("Requesting AirNow data...")
-print(start, end)
+print("Request:")
+print(params)
 
 
 response = requests.get(url, params=params)
 
 
-print("URL:")
-print(response.url)
-
-
-print("AirNow response:")
-print(response.text[:500])
+print("Response:")
+print(response.text[:1000])
 
 
 response.raise_for_status()
@@ -62,45 +57,32 @@ rows = []
 for item in data:
 
     rows.append({
-
-        "latitude": item.get("Latitude"),
-
-        "longitude": item.get("Longitude"),
-
-        "AQI": item.get("AQI"),
-
-        "pollutant": item.get("Parameter"),
-
-        "site": item.get("ReportingArea"),
-
-        "category": item.get("Category", {}).get("Name"),
-
-        "state": item.get("StateCode"),
-
-        "updated":
-            str(item.get("DateObserved"))
+        "latitude": item["Latitude"],
+        "longitude": item["Longitude"],
+        "AQI": item["AQI"],
+        "pollutant": item["Parameter"],
+        "site": item["ReportingArea"],
+        "category": item["Category"]["Name"],
+        "state": item["StateCode"],
+        "updated": (
+            str(item["DateObserved"])
             + " "
-            + str(item.get("HourObserved"))
-
+            + str(item["HourObserved"])
+        )
     })
 
 
-if len(rows) == 0:
-
-    print("No AQI data returned.")
+if not rows:
+    print("No data returned")
     exit()
 
 
 df = pd.DataFrame(rows)
 
 
-# remove duplicate monitoring locations
-df = df.drop_duplicates(
-    subset=[
-        "latitude",
-        "longitude",
-        "pollutant"
-    ]
+df.drop_duplicates(
+    subset=["latitude","longitude","pollutant"],
+    inplace=True
 )
 
 
@@ -111,5 +93,5 @@ df.to_csv(
 
 
 print(
-    f"Saved {len(df)} AQI points to data.csv"
+    f"Created data.csv with {len(df)} rows"
 )
