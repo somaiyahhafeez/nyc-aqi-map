@@ -1,89 +1,120 @@
 import requests
 import pandas as pd
-from datetime import datetime, timedelta
 import os
+from datetime import datetime
 
 
 API_KEY = os.environ["AIRNOW_API_KEY"]
 
 
-# NYC bounding box
-BBOX = "-74.3,40.4,-73.6,41.0"
-
-
-now = datetime.utcnow() - timedelta(hours=2)
-
-start = now.strftime("%Y-%m-%dT%H-0000")
-end = (now + timedelta(hours=1)).strftime("%Y-%m-%dT%H-0000")
-
-
-url = "https://www.airnowapi.org/aq/data/"
-
-
-params = {
-    "startDate": start,
-    "endDate": end,
-    "parameters": "PM25,O3",
-    "BBOX": BBOX,
-    "dataType": "A",
-    "format": "application/json",
-    "verbose": "1",
-    "monitorType": "0",
-    "API_KEY": API_KEY
-}
-
-
-response = requests.get(url, params=params)
-
-print(response.status_code)
-print(response.text[:500])
-
-
-response.raise_for_status()
-
-
-data = response.json()
+locations = [
+    {
+        "name": "Manhattan",
+        "zip": "10001",
+        "type": "borough"
+    },
+    {
+        "name": "Brooklyn",
+        "zip": "11201",
+        "type": "borough"
+    },
+    {
+        "name": "Queens",
+        "zip": "11354",
+        "type": "borough"
+    },
+    {
+        "name": "Bronx",
+        "zip": "10451",
+        "type": "borough"
+    },
+    {
+        "name": "Staten Island",
+        "zip": "10301",
+        "type": "borough"
+    },
+    {
+        "name": "New York State",
+        "zip": "12207",
+        "type": "state"
+    }
+]
 
 
 rows = []
 
 
-for item in data:
+for loc in locations:
 
-    rows.append({
+    url = "https://www.airnowapi.org/aq/observation/zipCode/current/"
 
-        "latitude": item["Latitude"],
 
-        "longitude": item["Longitude"],
+    params = {
+        "format": "application/json",
+        "zipCode": loc["zip"],
+        "distance": "25",
+        "API_KEY": API_KEY
+    }
 
-        "AQI": item["AQI"],
 
-        "pollutant": item["Parameter"],
+    response = requests.get(
+        url,
+        params=params
+    )
 
-        "site": item["ReportingArea"],
 
-        "category": item["Category"]["Name"],
+    print(
+        loc["name"],
+        response.status_code
+    )
 
-        "state": item["StateCode"],
 
-        "updated":
-            str(item["DateObserved"])
-            + " "
-            + str(item["HourObserved"])
+    if response.status_code != 200:
+        continue
 
-    })
+
+    data = response.json()
+
+
+    # pick the highest AQI pollutant
+    if len(data) > 0:
+
+        best = max(
+            data,
+            key=lambda x: x["AQI"]
+        )
+
+
+        rows.append({
+
+            "location": loc["name"],
+
+            "type": loc["type"],
+
+            "latitude": best["Latitude"],
+
+            "longitude": best["Longitude"],
+
+            "AQI": best["AQI"],
+
+            "pollutant": best["ParameterName"],
+
+            "category": best["Category"]["Name"],
+
+            "updated": datetime.now().strftime(
+                "%Y-%m-%d %H:%M"
+            )
+
+        })
+
+
+if not rows:
+    raise Exception(
+        "No AQI data returned"
+    )
 
 
 df = pd.DataFrame(rows)
-
-
-df = df.drop_duplicates(
-    subset=[
-        "latitude",
-        "longitude",
-        "pollutant"
-    ]
-)
 
 
 df.to_csv(
