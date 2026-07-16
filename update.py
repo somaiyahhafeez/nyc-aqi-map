@@ -1,43 +1,98 @@
+import requests
 import pandas as pd
+import os
+from datetime import datetime
 
 
-# Read the main AirNow file
-df = pd.read_csv("data.csv")
+API_KEY = os.environ["AIRNOW_API_KEY"]
 
 
-# Convert county names to NYC borough names
-borough_map = {
-    "Kings": "Brooklyn",
-    "New York": "Manhattan",
-    "Richmond": "Staten Island",
-    "Queens": "Queens",
-    "Bronx": "Bronx"
-}
+# Read NY county list
+counties = pd.read_csv("ny_counties.csv")
 
 
-# Keep only NYC counties
-nyc = df[df["county"].isin(borough_map.keys())].copy()
+rows = []
 
 
-# Create borough name column
-nyc["borough"] = nyc["county"].map(borough_map)
+for _, county in counties.iterrows():
+
+    county_name = county["county"]
+    zipcode = str(county["zip"])
 
 
-# Save NYC version
-nyc[
-    [
-        "borough",
-        "latitude",
-        "longitude",
-        "AQI",
-        "pollutant",
-        "category",
-        "updated"
-    ]
-].to_csv(
-    "nyc_data.csv",
+    url = "https://www.airnowapi.org/aq/observation/zipCode/current/"
+
+
+    params = {
+        "format": "application/json",
+        "zipCode": zipcode,
+        "distance": "25",
+        "API_KEY": API_KEY
+    }
+
+
+    response = requests.get(
+        url,
+        params=params
+    )
+
+
+    print(
+        county_name,
+        response.status_code
+    )
+
+
+    if response.status_code != 200:
+        continue
+
+
+    data = response.json()
+
+
+    if len(data) == 0:
+        continue
+
+
+    # Select pollutant with highest AQI
+    worst = max(
+        data,
+        key=lambda x: x["AQI"]
+    )
+
+
+    rows.append({
+
+        "county": county_name,
+
+        "latitude": worst["Latitude"],
+
+        "longitude": worst["Longitude"],
+
+        "AQI": worst["AQI"],
+
+        "pollutant": worst["ParameterName"],
+
+        "category": worst["Category"]["Name"],
+
+        "updated": f"{worst['DateObserved']} {worst['HourObserved']}:00 {worst['LocalTimeZone']}"
+
+    })
+
+
+if not rows:
+    raise Exception("No AQI data returned")
+
+
+df = pd.DataFrame(rows)
+
+
+df.to_csv(
+    "data.csv",
     index=False
 )
 
 
-print("Created nyc_data.csv")
+print(
+    f"Created data.csv with {len(df)} counties"
+)
