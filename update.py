@@ -8,7 +8,7 @@ API_KEY = os.environ["AIRNOW_API_KEY"]
 
 
 # NYC bounding box
-BBOX = "-74.3,40.4,-73.6,41.0"
+BBOX = "-74.0,40.5,-73.9,40.6"
 
 
 # Get previous completed hour
