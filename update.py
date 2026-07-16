@@ -14,6 +14,8 @@ import csv
 
 import pandas as pd
 import requests
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 API_KEY = os.environ.get("AIRNOW_API_KEY")
@@ -253,6 +255,9 @@ def main():
 
 
     stations = fetch_ny_state_stations()
+    updated = datetime.now(
+    ZoneInfo("America/New_York")
+    ).strftime("%Y-%m-%d %H:%M")
 
 
     rows = []
@@ -307,7 +312,7 @@ def main():
                 "category": "No data",
                 "color": "#e0e0e0",
                 "distance_miles": round(distance,1),
-                "updated": None
+                "updated": updated,
             })
 
             continue
@@ -363,10 +368,7 @@ def main():
                 1
             ),
 
-            "updated":
-                f"{nearest.get('DateObserved','')} "
-                f"{nearest.get('HourObserved','')}:00 "
-                f"{nearest.get('LocalTimeZone','')}"
+            "updated": updated,
 
         })
 
