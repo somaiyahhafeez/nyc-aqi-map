@@ -7,7 +7,7 @@ from datetime import datetime
 API_KEY = os.environ["IQAIR_API_KEY"]
 
 
-cities = pd.read_csv("ny_counties.csv")
+cities = pd.read_csv("ny_cities.csv")
 
 
 rows = []
