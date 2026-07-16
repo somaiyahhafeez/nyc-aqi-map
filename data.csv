@@ -1,25 +1,25 @@
-county,latitude,longitude,AQI,pollutant,category,source,updated
-Albany,42.5884,-73.5646,96,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Bronx,40.8419,-73.8359,157,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Cayuga,42.8049,-76.3589,172,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Clinton,44.467,-73.201,62,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Cortland,42.8049,-76.3589,172,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Dutchess,41.74,-73.7654,65,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Erie,42.6595,-79.0628,267,PM2.5,Very Unhealthy,AirNow,2026-07-16 14:34
-Essex,44.467,-73.201,62,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Hamilton,42.8975,-73.2508,96,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Kings,40.692,-74.187,129,PM2.5,Unhealthy for Sensitive Groups,AirNow,2026-07-16 14:34
-Nassau,40.768,-73.6202,95,PM2.5,Moderate,AirNow,2026-07-16 14:34
-New York,40.8419,-73.8359,157,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Onondaga,42.8049,-76.3589,172,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Orange,40.8419,-73.8359,157,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Oswego,43.5263,-76.8398,211,PM2.5,Very Unhealthy,AirNow,2026-07-16 14:34
-Putnam,41.4014,-73.4464,88,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Queens,40.8419,-73.8359,157,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Rensselaer,42.5884,-73.5646,96,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Richmond,40.692,-74.187,129,PM2.5,Unhealthy for Sensitive Groups,AirNow,2026-07-16 14:34
-Rockland,40.8419,-73.8359,157,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Seneca,42.8049,-76.3589,172,PM2.5,Unhealthy,AirNow,2026-07-16 14:34
-Suffolk,41.1189,-73.3369,10,O3,Good,AirNow,2026-07-16 14:34
-Ulster,41.74,-73.7654,65,PM2.5,Moderate,AirNow,2026-07-16 14:34
-Washington,43.6083,-72.9822,68,PM2.5,Moderate,AirNow,2026-07-16 14:34
+county,latitude,longitude,AQI,pollutant,category,updated
+Albany,42.5884,-73.5646,96,PM2.5,Moderate,2026-07-16 9:00 EST
+Bronx,40.8419,-73.8359,157,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Cayuga,42.8049,-76.3589,172,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Clinton,44.467,-73.201,62,PM2.5,Moderate,2026-07-16 9:00 EST
+Cortland,42.8049,-76.3589,172,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Dutchess,41.74,-73.7654,65,PM2.5,Moderate,2026-07-16 9:00 EST
+Erie,42.6595,-79.0628,267,PM2.5,Very Unhealthy,2026-07-16 9:00 EST
+Essex,44.467,-73.201,62,PM2.5,Moderate,2026-07-16 9:00 EST
+Hamilton,42.8975,-73.2508,96,PM2.5,Moderate,2026-07-16 9:00 EST
+Kings,40.692,-74.187,129,PM2.5,Unhealthy for Sensitive Groups,2026-07-16 9:00 EST
+Nassau,40.768,-73.6202,95,PM2.5,Moderate,2026-07-16 9:00 EST
+New York,40.8419,-73.8359,157,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Onondaga,42.8049,-76.3589,172,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Orange,40.8419,-73.8359,157,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Oswego,43.5263,-76.8398,211,PM2.5,Very Unhealthy,2026-07-16 9:00 EST
+Putnam,41.4014,-73.4464,88,PM2.5,Moderate,2026-07-16 9:00 EST
+Queens,40.8419,-73.8359,157,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Rensselaer,42.5884,-73.5646,96,PM2.5,Moderate,2026-07-16 9:00 EST
+Richmond,40.692,-74.187,129,PM2.5,Unhealthy for Sensitive Groups,2026-07-16 9:00 EST
+Rockland,40.8419,-73.8359,157,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Seneca,42.8049,-76.3589,172,PM2.5,Unhealthy,2026-07-16 9:00 EST
+Suffolk,41.1189,-73.3369,10,O3,Good,2026-07-16 9:00 EST
+Ulster,41.74,-73.7654,65,PM2.5,Moderate,2026-07-16 9:00 EST
+Washington,43.6083,-72.9822,68,PM2.5,Moderate,2026-07-16 9:00 EST
