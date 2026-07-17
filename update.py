@@ -14,7 +14,7 @@ import csv
 
 import pandas as pd
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 
@@ -166,10 +166,14 @@ def fetch_ny_state_stations():
 
     url = "https://www.airnowapi.org/aq/data/"
 
+    # Use the current UTC hour for both start and end, so this always pulls
+    # the latest available reading instead of one fixed, ever-more-stale day.
+    now = datetime.now(timezone.utc)
+    current_hour = now.strftime("%Y-%m-%dT%H")
 
     params = {
-        "startDate": "2026-07-16T00",
-        "endDate": "2026-07-16T23",
+        "startDate": current_hour,
+        "endDate": current_hour,
         "parameters": "PM25,OZONE,PM10,CO,NO2,SO2",
         "BBOX": NY_STATE_BBOX,
         "dataType": "A",
@@ -320,22 +324,24 @@ def main():
 
         cat = nearest.get(
             "Category",
-            {}
+            None
         )
 
         if isinstance(cat, dict):
-            number = cat.get(
-                "Number",
-                1
-            )
+            number = cat.get("Number", None)
         else:
             number = cat
 
-
-        info = AQI_COLORS.get(
-            int(number),
-            NO_DATA
-        )
+        # If the category is missing or unparseable, treat it the same as
+        # "no data" rather than silently defaulting to "Good" -- a station
+        # sending malformed data shouldn't be reported as clean air.
+        if number is None:
+            info = NO_DATA
+        else:
+            try:
+                info = AQI_COLORS.get(int(number), NO_DATA)
+            except (TypeError, ValueError):
+                info = NO_DATA
 
 
         pollutant = nearest.get(
@@ -355,7 +361,7 @@ def main():
 
             "longitude": nearest["lon"],
 
-            "AQI": nearest["AQI"],
+            "AQI": nearest["AQI"] if info is not NO_DATA else None,
 
             "pollutant": pollutant,
 
