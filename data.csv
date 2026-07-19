@@ -1,62 +1,62 @@
 county,latitude,longitude,AQI,pollutant,category,color,distance_miles,updated
-Albany,42.6425,-73.7547,152.0,PM2.5,Unhealthy,#ff0000,0.7,2026-07-18 19:51
-Allegany,42.2244,-78.0334,,,No data,#e0e0e0,60.0,2026-07-18 19:51
-Bronx,40.816101,-73.902199,102.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,1.0,2026-07-18 19:51
-Broome,41.867336,-75.686602,93.0,PM2.5,Moderate,#ffff00,19.8,2026-07-18 19:51
-Cattaraugus,41.843722,-79.172889,47.0,PM2.5,Good,#00e400,18.0,2026-07-18 19:51
-Cayuga,43.0528,-76.0597,56.0,PM2.5,Moderate,#ffff00,27.0,2026-07-18 19:51
-Chautauqua,41.843722,-79.172889,47.0,PM2.5,Good,#00e400,18.0,2026-07-18 19:51
-Chemung,41.705226,-76.512726,136.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,30.8,2026-07-18 19:51
-Chenango,41.867336,-75.686602,93.0,PM2.5,Moderate,#ffff00,21.5,2026-07-18 19:51
-Clinton,44.39308,-73.8589,93.0,PM2.5,Moderate,#ffff00,29.0,2026-07-18 19:51
-Columbia,42.6425,-73.7547,152.0,PM2.5,Unhealthy,#ff0000,27.1,2026-07-18 19:51
-Cortland,43.0528,-76.0597,56.0,PM2.5,Moderate,#ffff00,33.3,2026-07-18 19:51
-Delaware,41.867336,-75.686602,93.0,PM2.5,Moderate,#ffff00,48.5,2026-07-18 19:51
-Dutchess,41.4994,-74.0097,118.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,14.7,2026-07-18 19:51
-Erie,42.8781,-78.8094,57.0,PM2.5,Moderate,#ffff00,3.5,2026-07-18 19:51
-Essex,44.39308,-73.8589,93.0,PM2.5,Moderate,#ffff00,26.1,2026-07-18 19:51
-Franklin,45.017976,-74.735339,146.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,24.5,2026-07-18 19:51
-Fulton,42.6425,-73.7547,152.0,PM2.5,Unhealthy,#ff0000,41.0,2026-07-18 19:51
-Genesee,43.145021,-77.557608,37.0,PM2.5,Good,#00e400,27.3,2026-07-18 19:51
-Greene,42.6425,-73.7547,152.0,PM2.5,Unhealthy,#ff0000,29.8,2026-07-18 19:51
-Hamilton,42.887501,-73.249702,137.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,21.4,2026-07-18 19:51
-Herkimer,43.0994,-75.225,96.0,PM2.5,Moderate,#ffff00,12.9,2026-07-18 19:51
-Jefferson,44.219953,-76.521143,61.0,PM2.5,Moderate,#ffff00,34.8,2026-07-18 19:51
-Kings,40.641819,-74.018707,95.0,PM2.5,Moderate,#ffff00,3.7,2026-07-18 19:51
-Lewis,43.0994,-75.225,96.0,PM2.5,Moderate,#ffff00,49.3,2026-07-18 19:51
-Livingston,43.145021,-77.557608,37.0,PM2.5,Good,#00e400,19.0,2026-07-18 19:51
-Madison,43.0528,-76.0597,56.0,PM2.5,Moderate,#ffff00,13.5,2026-07-18 19:51
-Monroe,43.145021,-77.557608,37.0,PM2.5,Good,#00e400,2.5,2026-07-18 19:51
-Montgomery,42.6425,-73.7547,152.0,PM2.5,Unhealthy,#ff0000,38.4,2026-07-18 19:51
-Nassau,40.739264,-73.817694,103.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,9.6,2026-07-18 19:51
-New York,40.770908,-74.036218,84.0,PM2.5,Moderate,#ffff00,2.7,2026-07-18 19:51
-Niagara,43.160056,-79.23475,103.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,10.2,2026-07-18 19:51
-Oneida,43.0994,-75.225,96.0,PM2.5,Moderate,#ffff00,0.1,2026-07-18 19:51
-Onondaga,43.0528,-76.0597,56.0,PM2.5,Moderate,#ffff00,4.6,2026-07-18 19:51
-Ontario,43.1461,-77.5481,29.0,PM2.5,Good,#00e400,22.6,2026-07-18 19:51
-Orange,41.182079,-74.028191,139.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,7.5,2026-07-18 19:51
-Orleans,43.1461,-77.5481,29.0,PM2.5,Good,#00e400,31.5,2026-07-18 19:51
-Oswego,43.0528,-76.0597,56.0,PM2.5,Moderate,#ffff00,37.5,2026-07-18 19:51
-Otsego,43.0994,-75.225,96.0,PM2.5,Moderate,#ffff00,31.4,2026-07-18 19:51
-Putnam,41.4014,-73.4447,158.0,PM2.5,Unhealthy,#ff0000,7.2,2026-07-18 19:51
-Queens,40.739264,-73.817694,103.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,1.9,2026-07-18 19:51
-Rensselaer,42.6425,-73.7547,152.0,PM2.5,Unhealthy,#ff0000,0.8,2026-07-18 19:51
-Richmond,40.63306,-74.137156,78.0,PM2.5,Moderate,#ffff00,3.0,2026-07-18 19:51
-Rockland,41.182079,-74.028191,139.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,7.5,2026-07-18 19:51
-St. Lawrence,45.017976,-74.735339,146.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,9.5,2026-07-18 19:51
-Saratoga,42.887501,-73.249702,137.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,30.3,2026-07-18 19:51
-Schoharie,42.6425,-73.7547,152.0,PM2.5,Unhealthy,#ff0000,20.9,2026-07-18 19:51
-Schuyler,41.6447,-76.9392,95.0,PM2.5,Moderate,#ffff00,54.8,2026-07-18 19:51
-Seneca,43.0528,-76.0597,56.0,PM2.5,Moderate,#ffff00,38.7,2026-07-18 19:51
-Steuben,41.6447,-76.9392,95.0,PM2.5,Moderate,#ffff00,51.6,2026-07-18 19:51
-Suffolk,40.8278,-73.0575,161.0,PM2.5,Unhealthy,#ff0000,7.4,2026-07-18 19:51
-Sullivan,41.4994,-74.0097,118.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,36.8,2026-07-18 19:51
-Tioga,41.705226,-76.512726,136.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,30.4,2026-07-18 19:51
-Tompkins,43.0528,-76.0597,56.0,PM2.5,Moderate,#ffff00,47.6,2026-07-18 19:51
-Ulster,41.4994,-74.0097,118.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,29.8,2026-07-18 19:51
-Warren,43.608528,-72.98246,163.0,PM2.5,Unhealthy,#ff0000,38.9,2026-07-18 19:51
-Washington,43.608528,-72.98246,163.0,PM2.5,Unhealthy,#ff0000,20.0,2026-07-18 19:51
-Wayne,43.1461,-77.5481,29.0,PM2.5,Good,#00e400,31.5,2026-07-18 19:51
-Westchester,41.0522,-73.7642,108.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,1.3,2026-07-18 19:51
-Wyoming,43.145021,-77.557608,37.0,PM2.5,Good,#00e400,29.4,2026-07-18 19:51
-Yates,43.1461,-77.5481,29.0,PM2.5,Good,#00e400,41.8,2026-07-18 19:51
+Albany,42.6425,-73.7547,129.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,0.7,2026-07-18 22:25
+Allegany,42.2244,-78.0334,,,No data,#e0e0e0,60.0,2026-07-18 22:25
+Bronx,40.816101,-73.902199,71.0,PM2.5,Moderate,#ffff00,1.0,2026-07-18 22:25
+Broome,41.867336,-75.686602,49.0,PM2.5,Good,#00e400,19.8,2026-07-18 22:25
+Cattaraugus,41.843722,-79.172889,28.0,PM2.5,Good,#00e400,18.0,2026-07-18 22:25
+Cayuga,43.0528,-76.0597,26.0,PM2.5,Good,#00e400,27.0,2026-07-18 22:25
+Chautauqua,41.843722,-79.172889,28.0,PM2.5,Good,#00e400,18.0,2026-07-18 22:25
+Chemung,41.705226,-76.512726,72.0,PM2.5,Moderate,#ffff00,30.8,2026-07-18 22:25
+Chenango,41.867336,-75.686602,49.0,PM2.5,Good,#00e400,21.5,2026-07-18 22:25
+Clinton,44.39308,-73.8589,63.0,PM2.5,Moderate,#ffff00,29.0,2026-07-18 22:25
+Columbia,42.6425,-73.7547,129.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,27.1,2026-07-18 22:25
+Cortland,43.0528,-76.0597,26.0,PM2.5,Good,#00e400,33.3,2026-07-18 22:25
+Delaware,41.867336,-75.686602,49.0,PM2.5,Good,#00e400,48.5,2026-07-18 22:25
+Dutchess,41.4994,-74.0097,71.0,PM2.5,Moderate,#ffff00,14.7,2026-07-18 22:25
+Erie,42.8781,-78.8094,157.0,PM2.5,Unhealthy,#ff0000,3.5,2026-07-18 22:25
+Essex,44.39308,-73.8589,63.0,PM2.5,Moderate,#ffff00,26.1,2026-07-18 22:25
+Franklin,45.017976,-74.735339,72.0,PM2.5,Moderate,#ffff00,24.5,2026-07-18 22:25
+Fulton,42.6425,-73.7547,129.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,41.0,2026-07-18 22:25
+Genesee,43.145021,-77.557608,127.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,27.3,2026-07-18 22:25
+Greene,42.6425,-73.7547,129.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,29.8,2026-07-18 22:25
+Hamilton,42.887501,-73.249702,93.0,PM2.5,Moderate,#ffff00,21.4,2026-07-18 22:25
+Herkimer,43.0994,-75.225,37.0,PM2.5,Good,#00e400,12.9,2026-07-18 22:25
+Jefferson,44.219953,-76.521143,50.0,PM2.5,Good,#00e400,34.8,2026-07-18 22:25
+Kings,40.641819,-74.018707,68.0,PM2.5,Moderate,#ffff00,3.7,2026-07-18 22:25
+Lewis,43.0994,-75.225,37.0,PM2.5,Good,#00e400,49.3,2026-07-18 22:25
+Livingston,43.145021,-77.557608,127.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,19.0,2026-07-18 22:25
+Madison,43.0528,-76.0597,26.0,PM2.5,Good,#00e400,13.5,2026-07-18 22:25
+Monroe,43.145021,-77.557608,127.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,2.5,2026-07-18 22:25
+Montgomery,42.6425,-73.7547,129.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,38.4,2026-07-18 22:25
+Nassau,40.739264,-73.817694,67.0,PM2.5,Moderate,#ffff00,9.6,2026-07-18 22:25
+New York,40.770908,-74.036218,69.0,PM2.5,Moderate,#ffff00,2.7,2026-07-18 22:25
+Niagara,43.160056,-79.23475,144.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,10.2,2026-07-18 22:25
+Oneida,43.0994,-75.225,37.0,PM2.5,Good,#00e400,0.1,2026-07-18 22:25
+Onondaga,43.0528,-76.0597,26.0,PM2.5,Good,#00e400,4.6,2026-07-18 22:25
+Ontario,43.1461,-77.5481,107.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,22.6,2026-07-18 22:25
+Orange,41.182079,-74.028191,105.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,7.5,2026-07-18 22:25
+Orleans,43.1461,-77.5481,107.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,31.5,2026-07-18 22:25
+Oswego,43.0528,-76.0597,26.0,PM2.5,Good,#00e400,37.5,2026-07-18 22:25
+Otsego,43.0994,-75.225,37.0,PM2.5,Good,#00e400,31.4,2026-07-18 22:25
+Putnam,41.4014,-73.4447,84.0,PM2.5,Moderate,#ffff00,7.2,2026-07-18 22:25
+Queens,40.739264,-73.817694,67.0,PM2.5,Moderate,#ffff00,1.9,2026-07-18 22:25
+Rensselaer,42.6425,-73.7547,129.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,0.8,2026-07-18 22:25
+Richmond,40.63306,-74.137156,62.0,PM2.5,Moderate,#ffff00,3.0,2026-07-18 22:25
+Rockland,41.182079,-74.028191,105.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,7.5,2026-07-18 22:25
+St. Lawrence,45.017976,-74.735339,72.0,PM2.5,Moderate,#ffff00,9.5,2026-07-18 22:25
+Saratoga,42.887501,-73.249702,93.0,PM2.5,Moderate,#ffff00,30.3,2026-07-18 22:25
+Schoharie,42.6425,-73.7547,129.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,20.9,2026-07-18 22:25
+Schuyler,41.6447,-76.9392,42.0,PM2.5,Good,#00e400,54.8,2026-07-18 22:25
+Seneca,43.0528,-76.0597,26.0,PM2.5,Good,#00e400,38.7,2026-07-18 22:25
+Steuben,41.6447,-76.9392,42.0,PM2.5,Good,#00e400,51.6,2026-07-18 22:25
+Suffolk,40.8278,-73.0575,74.0,PM2.5,Moderate,#ffff00,7.4,2026-07-18 22:25
+Sullivan,41.4994,-74.0097,71.0,PM2.5,Moderate,#ffff00,36.8,2026-07-18 22:25
+Tioga,41.705226,-76.512726,72.0,PM2.5,Moderate,#ffff00,30.4,2026-07-18 22:25
+Tompkins,43.0528,-76.0597,26.0,PM2.5,Good,#00e400,47.6,2026-07-18 22:25
+Ulster,41.4994,-74.0097,71.0,PM2.5,Moderate,#ffff00,29.8,2026-07-18 22:25
+Warren,43.608528,-72.98246,128.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,38.9,2026-07-18 22:25
+Washington,43.608528,-72.98246,128.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,20.0,2026-07-18 22:25
+Wayne,43.1461,-77.5481,107.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,31.5,2026-07-18 22:25
+Westchester,41.0522,-73.7642,49.0,PM2.5,Good,#00e400,1.3,2026-07-18 22:25
+Wyoming,43.145021,-77.557608,127.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,29.4,2026-07-18 22:25
+Yates,43.1461,-77.5481,107.0,PM2.5,Unhealthy for Sensitive Groups,#ff7e00,41.8,2026-07-18 22:25
