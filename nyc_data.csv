@@ -1,6 +1,6 @@
 borough,latitude,longitude,AQI,pollutant,category,color,updated
-Bronx,40.816101,-73.902199,53,PM2.5,Moderate,#ffff00,2026-10-25 06:39
-Brooklyn,40.694401,-73.928596,65,PM2.5,Moderate,#ffff00,2026-10-25 06:39
-Manhattan,40.770908,-74.036218,63,PM2.5,Moderate,#ffff00,2026-10-25 06:39
-Queens,40.739264,-73.817694,58,PM2.5,Moderate,#ffff00,2026-10-25 06:39
-Staten Island,40.63306,-74.137156,53,PM2.5,Moderate,#ffff00,2026-10-25 06:39
+Bronx,40.816101,-73.902199,45,PM2.5,Good,#00e400,2026-10-25 10:46
+Brooklyn,40.694401,-73.928596,66,PM2.5,Moderate,#ffff00,2026-10-25 10:46
+Manhattan,40.770908,-74.036218,55,PM2.5,Moderate,#ffff00,2026-10-25 10:46
+Queens,40.739264,-73.817694,57,PM2.5,Moderate,#ffff00,2026-10-25 10:46
+Staten Island,40.63306,-74.137156,72,PM2.5,Moderate,#ffff00,2026-10-25 10:46
